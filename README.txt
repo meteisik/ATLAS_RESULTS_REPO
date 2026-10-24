@@ -8,12 +8,12 @@ Policies: CWE22, CWE321, CWE284, CWE643, CWE89, CWE117
 Sample repos referenced in paper: https://samate.nist.gov/SARD/test-suites/109 & https://github.com/UnitTestBot/juliet-java-test-suite/tree/master
 
 Contents
-  corpus/       10,896 Java files: baseline, training and held-out samples.
+  corpus/       10,896 Java files: 10,800 evaluation samples (Safe/Violating) and 96 baseline/training files.
   rego/         Policies and matching drivers, grouped by campaign.
   results/      Campaign result JSON, archived_results.csv and time_logs.csv.
 
 Indexes
-  catalog.json, pipelines.csv:  Available pipelines.
+  pipelines.csv:                Available pipelines.
   campaigns.csv:                Campaign settings and result locations.
   corpus_index.csv:             Sample splits and Safe/Violating labels.
   campaign_inputs.csv:          Baseline/training files used by each campaign.
