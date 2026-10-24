@@ -9,13 +9,15 @@ Contents
   results/      Campaign result JSON, archived_results.csv and time_logs.csv.
 
 Indexes
-  catalog.json, pipelines.csv   Available pipelines.
+  catalog.json, pipelines.csv:   Available pipelines.
   campaigns.csv                Campaign settings and result locations.
   corpus_index.csv             Sample splits and Safe/Violating labels.
   campaign_inputs.csv          Baseline/training files used by each campaign.
   rego_index.csv               Pipeline-to-policy and driver mappings.
 
-To analyze a sample, open the windows sample runner,
+To analyze a sample, open the Windows sample runner,
 select a pipeline for the matching policy class, and upload the Java file.
 CWE321 baseline example: corpus/CWE321/baseline/MixedP1P2P3.java.
+
+The sample runner is only available for Windows systems.
 
