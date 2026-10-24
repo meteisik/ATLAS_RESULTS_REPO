@@ -5,6 +5,8 @@ pipelines across six policy classes.
 
 Policies: CWE22, CWE321, CWE284, CWE643, CWE89, CWE117
 
+Sample repos referenced in paper: https://samate.nist.gov/SARD/test-suites/109 & https://github.com/UnitTestBot/juliet-java-test-suite/tree/master
+
 Contents
   corpus/       10,896 Java files: baseline, training and held-out samples.
   rego/         Policies and matching drivers, grouped by campaign.
