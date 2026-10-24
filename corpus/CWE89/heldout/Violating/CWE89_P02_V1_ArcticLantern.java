@@ -1,0 +1,36 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P02_V1_ArcticLantern {
+
+    public void runArcticLantern() throws SQLException {
+        String dataCopy;
+        {
+            String data;
+            data = System.getenv("ARCTIC_LANTERN_FILTER");
+            dataCopy = data;
+        }
+        {
+            String data = dataCopy;
+            Connection arcticLanternConnection = DriverManager.getConnection("jdbc:hsqldb:mem:arcticLantern");
+            Statement arcticLanternStatement = null;
+            ResultSet arcticLanternRows = null;
+            try {
+                arcticLanternStatement = arcticLanternConnection.createStatement();
+                arcticLanternRows = arcticLanternStatement.executeQuery("select * from users where name='" + data + "'");
+                System.out.println(arcticLanternRows.getRow());
+            } finally {
+                if (arcticLanternRows != null) {
+                    arcticLanternRows.close();
+                }
+                if (arcticLanternStatement != null) {
+                    arcticLanternStatement.close();
+                }
+                arcticLanternConnection.close();
+            }
+        }
+    }
+}

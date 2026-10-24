@@ -1,0 +1,46 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P07_V2_SaffronQuartzSafe {
+
+    public void runSaffronQuartz() throws XPathExpressionException {
+        String data;
+        data = null;
+        for (int j = 0; j < 1; j++) {
+            data = (new CWE643_P07_V2_SaffronQuartzSafeSource()).sourceSaffronQuartz();
+        }
+        String saffronQuartzXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            saffronQuartzXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            saffronQuartzXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] saffronQuartzTokens = data.split("||");
+            if (saffronQuartzTokens.length < 2) {
+                return;
+            }
+            String saffronQuartzUser = saffronQuartzTokens[0];
+            String saffronQuartzPass = saffronQuartzTokens[1];
+            XPath saffronQuartzXPath = XPathFactory.newInstance().newXPath();
+            InputSource saffronQuartzXml = new InputSource(saffronQuartzXmlFile);
+            String saffronQuartzQuery = "//users/user[name/text()='" + saffronQuartzUser
+                    + "' and pass/text()='" + saffronQuartzPass + "']" + "/secret/text()";
+            String saffronQuartzSecret = (String) saffronQuartzXPath.evaluate(saffronQuartzQuery, saffronQuartzXml, XPathConstants.STRING);
+            System.out.println(saffronQuartzSecret);
+        }
+    }
+}
+
+class CWE643_P07_V2_SaffronQuartzSafeSource {
+
+    public String sourceSaffronQuartz() {
+        String data;
+        data = "foo";
+        return data;
+    }
+}

@@ -1,0 +1,36 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CWE284_P06_V1_MosaicBeaconSafe {
+
+    public void deleteMosaicBeaconAccount() throws SQLException {
+        String data;
+        data = System.getenv("MOSAIC_BEACON_ACCOUNT_ID");
+        boolean authorized = isAuthorized(data);
+        (new CWE284_P06_V1_MosaicBeaconSafeSink()).applyMosaicBeaconDeletion(data, authorized);
+    }
+
+    private boolean isAuthorized(String accountId) {
+        String operator = System.getProperty("user.name");
+        return operator != null && operator.equals(accountId);
+    }
+}
+
+class CWE284_P06_V1_MosaicBeaconSafeSink {
+    public void applyMosaicBeaconDeletion(String data, boolean authorized) throws SQLException {
+        Connection mosaicBeaconConnection = DriverManager.getConnection("jdbc:hsqldb:mem:mosaicBeacon");
+        try {
+            PreparedStatement mosaicBeaconDelete = mosaicBeaconConnection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+            mosaicBeaconDelete.setString(1, data);
+            if (authorized) {
+                mosaicBeaconDelete.executeUpdate();
+            } else {
+                throw new SecurityException("delete of account " + data + " is not authorized");
+            }
+        } finally {
+            mosaicBeaconConnection.close();
+        }
+    }
+}

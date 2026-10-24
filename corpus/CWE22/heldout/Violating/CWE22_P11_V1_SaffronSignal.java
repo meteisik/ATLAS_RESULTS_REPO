@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class CWE22_P11_V1_SaffronSignal {
+
+    public void openSaffronSignal() {
+        String data;
+        data = System.getenv("SAFFRON_SIGNAL_PATH");
+        HashMap<Integer, String> dataHashMap = new HashMap<Integer, String>();
+        dataHashMap.put(0, data);
+        dataHashMap.put(1, data);
+        dataHashMap.put(2, data);
+        (new CWE22_P11_V1_SaffronSignalSink()).readSaffronSignal(dataHashMap);
+    }
+}
+
+class CWE22_P11_V1_SaffronSignalSink {
+    public void readSaffronSignal(HashMap<Integer, String> dataHashMap) {
+        String data = dataHashMap.get(2);
+        String saffronSignalRoot = "/home/user/uploads/";
+        if (data != null) {
+            File saffronSignalFile = new File(saffronSignalRoot + data);
+            FileInputStream saffronSignalStream = null;
+            InputStreamReader saffronSignalStreamReader = null;
+            BufferedReader saffronSignalReader = null;
+            if (saffronSignalFile.exists() && saffronSignalFile.isFile()) {
+                try {
+                    saffronSignalStream = new FileInputStream(saffronSignalFile);
+                    saffronSignalStreamReader = new InputStreamReader(saffronSignalStream, "UTF-8");
+                    saffronSignalReader = new BufferedReader(saffronSignalStreamReader);
+                    System.out.println(saffronSignalReader.readLine());
+                } catch (IOException exceptIO) {
+                    Logger.getLogger("CWE22_P11_V1_SaffronSignalSink").log(Level.WARNING, "Error with stream reading", exceptIO);
+                } finally {
+                    try {
+                        if (saffronSignalReader != null) {
+                            saffronSignalReader.close();
+                        }
+                        if (saffronSignalStreamReader != null) {
+                            saffronSignalStreamReader.close();
+                        }
+                        if (saffronSignalStream != null) {
+                            saffronSignalStream.close();
+                        }
+                    } catch (IOException exceptIO) {
+                        Logger.getLogger("CWE22_P11_V1_SaffronSignalSink").log(Level.WARNING, "Error closing stream reading objects", exceptIO);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+import java.util.HashMap;
+import java.util.logging.Logger;
+
+public class CWE117_P11_V1_VelvetSignal {
+
+    public void handleVelvetSignal() {
+        String data;
+        data = System.getenv("VELVET_SIGNAL_USER");
+        HashMap<Integer, String> dataHashMap = new HashMap<Integer, String>();
+        dataHashMap.put(0, data);
+        dataHashMap.put(1, data);
+        dataHashMap.put(2, data);
+        (new CWE117_P11_V1_VelvetSignalSink()).logVelvetSignal(dataHashMap);
+    }
+}
+
+class CWE117_P11_V1_VelvetSignalSink {
+    public void logVelvetSignal(HashMap<Integer, String> dataHashMap) {
+        String data = dataHashMap.get(2);
+        Logger velvetSignalLogger = Logger.getLogger("velvetSignal.audit");
+        velvetSignalLogger.info("Login attempt for user " + data);
+    }
+}

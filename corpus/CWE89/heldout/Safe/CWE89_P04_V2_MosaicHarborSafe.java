@@ -1,0 +1,39 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P04_V2_MosaicHarborSafe {
+    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;
+
+    private String loadMosaicHarbor() {
+        String data;
+        if (PRIVATE_STATIC_FINAL_TRUE) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+        return data;
+    }
+
+    public void runMosaicHarbor() throws SQLException {
+        String data = loadMosaicHarbor();
+        Connection mosaicHarborConnection = DriverManager.getConnection("jdbc:hsqldb:mem:mosaicHarbor");
+        Statement mosaicHarborStatement = null;
+        ResultSet mosaicHarborRows = null;
+        try {
+            mosaicHarborStatement = mosaicHarborConnection.createStatement();
+            mosaicHarborRows = mosaicHarborStatement.executeQuery("select * from users where name='" + data + "'");
+            System.out.println(mosaicHarborRows.getRow());
+        } finally {
+            if (mosaicHarborRows != null) {
+                mosaicHarborRows.close();
+            }
+            if (mosaicHarborStatement != null) {
+                mosaicHarborStatement.close();
+            }
+            mosaicHarborConnection.close();
+        }
+    }
+}

@@ -1,0 +1,35 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CWE284_P04_V1_JadeMantisSafe {
+
+    private boolean checkJadeMantisAccess(String accountId) {
+        boolean authorized = isAuthorized(accountId);
+        return authorized;
+    }
+
+    public void deleteJadeMantisAccount() throws SQLException {
+        String data;
+        data = System.getenv("JADE_MANTIS_ACCOUNT_ID");
+        boolean authorized = checkJadeMantisAccess(data);
+        Connection jadeMantisConnection = DriverManager.getConnection("jdbc:hsqldb:mem:jadeMantis");
+        try {
+            PreparedStatement jadeMantisDelete = jadeMantisConnection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+            jadeMantisDelete.setString(1, data);
+            if (!authorized) {
+                System.err.println("delete of account " + data + " refused");
+            } else {
+                jadeMantisDelete.executeUpdate();
+            }
+        } finally {
+            jadeMantisConnection.close();
+        }
+    }
+
+    private boolean isAuthorized(String accountId) {
+        String operator = System.getProperty("user.name");
+        return operator != null && operator.equals(accountId);
+    }
+}

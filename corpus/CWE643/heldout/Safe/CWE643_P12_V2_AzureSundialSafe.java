@@ -1,0 +1,51 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P12_V2_AzureSundialSafe {
+
+    public void runAzureSundial() throws XPathExpressionException {
+        String data;
+        if (true) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+        CWE643_P12_V2_AzureSundialSafeBase baseObject = new CWE643_P12_V2_AzureSundialSafeSink();
+        baseObject.action(data);
+    }
+}
+
+abstract class CWE643_P12_V2_AzureSundialSafeBase {
+
+    public abstract void action(String data) throws XPathExpressionException;
+}
+
+class CWE643_P12_V2_AzureSundialSafeSink extends CWE643_P12_V2_AzureSundialSafeBase {
+
+    public void action(String data) throws XPathExpressionException {
+        String azureSundialXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            azureSundialXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            azureSundialXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] azureSundialTokens = data.split("||");
+            if (azureSundialTokens.length < 2) {
+                return;
+            }
+            String azureSundialUser = azureSundialTokens[0];
+            String azureSundialPass = azureSundialTokens[1];
+            XPath azureSundialXPath = XPathFactory.newInstance().newXPath();
+            InputSource azureSundialXml = new InputSource(azureSundialXmlFile);
+            String azureSundialQuery = "//users/user[name/text()='" + azureSundialUser
+                    + "' and pass/text()='" + azureSundialPass + "']" + "/secret/text()";
+            String azureSundialSecret = (String) azureSundialXPath.evaluate(azureSundialQuery, azureSundialXml, XPathConstants.STRING);
+            System.out.println(azureSundialSecret);
+        }
+    }
+}

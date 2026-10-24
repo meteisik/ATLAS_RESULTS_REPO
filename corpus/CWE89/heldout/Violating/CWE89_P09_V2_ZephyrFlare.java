@@ -1,0 +1,47 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P09_V2_ZephyrFlare {
+    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;
+
+    static class Container {
+        public String containerOne;
+    }
+
+    public void runZephyrFlare() throws SQLException {
+        String data;
+        if (PRIVATE_STATIC_FINAL_FIVE == 5) {
+            data = System.getenv("ZEPHYR_FLARE_FILTER");
+        } else {
+            data = null;
+        }
+        Container dataContainer = new Container();
+        dataContainer.containerOne = data;
+        (new CWE89_P09_V2_ZephyrFlareSink()).queryZephyrFlare(dataContainer);
+    }
+}
+
+class CWE89_P09_V2_ZephyrFlareSink {
+    public void queryZephyrFlare(CWE89_P09_V2_ZephyrFlare.Container dataContainer) throws SQLException {
+        String data = dataContainer.containerOne;
+        Connection zephyrFlareConnection = DriverManager.getConnection("jdbc:hsqldb:mem:zephyrFlare");
+        Statement zephyrFlareStatement = null;
+        ResultSet zephyrFlareRows = null;
+        try {
+            zephyrFlareStatement = zephyrFlareConnection.createStatement();
+            zephyrFlareRows = zephyrFlareStatement.executeQuery("select * from users where name='" + data + "'");
+            System.out.println(zephyrFlareRows.getRow());
+        } finally {
+            if (zephyrFlareRows != null) {
+                zephyrFlareRows.close();
+            }
+            if (zephyrFlareStatement != null) {
+                zephyrFlareStatement.close();
+            }
+            zephyrFlareConnection.close();
+        }
+    }
+}

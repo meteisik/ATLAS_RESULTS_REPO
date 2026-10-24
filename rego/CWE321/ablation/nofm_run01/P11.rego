@@ -1,0 +1,101 @@
+package policies.cwe321
+import rego.v1
+
+policy_id := "CWE321"
+title := "Hard-coded cryptographic key"
+severity := "CRITICAL"
+description := "Describe cryptographic key‑material provenance so the policy layer can easily detect hard‑coded effective keys.\n\nNEUTRAL FACT BOUNDARY:\n- Emit one neutral fact for every terminal key‑material sink whose effective key argument resolves to an origin, including hardcoded, external, and generated values. The Python plugin describes provenance; Rego decides the violation.\n- The key‑spec constructor is the terminal occurrence (sink_ast_id). A downstream init call that consumes the constructed key‑spec object is recorded as key_consumer_ast_id evidence, never as a second occurrence.\n- Discover candidates from the loaded detection contract. Application method, class, parameter, and variable names are copied output only and are never detection gates.\n\nBACKWARD VALUE PROOF:\n- Trace the terminal key argument through canonical arguments, declaredAt, initializer, valueSourceIds, writeSites, receiver_declaredAt, calleeId, parameters, returnValue, branch, operator, builder, collection, and array relationships.\n- Receiver transformations such as getBytes and toCharArray carry the receiver value; charset or formatting arguments are not key origins.\n- Support direct values, locals/fields, constant byte[] or char[] aggregates, conditional assignments, helper returns, builder chains, collection round‑trips, generated material, and key objects later consumed by init.\n\nSOURCE SEMANTICS (recorded as structure, decided by Rego):\n- A VIOLATION is an effective key whose material is proven compile‑time fixed: origin_kinds contains only literal/constant terminals - directly, through a helper return, a concatenation or builder of literal fragments, or a complete constant collection/array aggregate.\n- Resolve every constructor/API identity from the graph: creationKind follows class_declared to a typeIdentityKind and compares qualifiedName; callKind follows calleeId to the callable envelope name and ownerTypeId to the declaring type identity. Lexical spellings on the use‑site node are not identity evidence.\n- SAFE is key material provisioned at runtime: origin_kinds contains a formal parameter, configuration/registry call result, field, or generated value and the effective key is not fully determined by literal sources.\n- A literal fragment combined with runtime data is still runtime‑derived key material; a key assembled ONLY from literal fragments is compile‑time fixed.\n- Algorithm markers, charset markers, mode/padding strings, IV‑only values, and null are not key origins; algorithm literals are recorded separately as algorithm_literal_ast_id.\n\nOUTPUT INVARIANTS:\n- Emit exactly one fact per terminal sink (sink_ast_id), violating AND safe alike.\n- Every nonzero AST id resolves in the loaded AST; absent structure is 0 or the empty string, never invented.\n- All names, values, types, locations, and classifications are derived from the loaded facts schema, domain‑model tags, and AST.\n"
+
+driver_facts := [f |
+  f := data.drivers.cwe321_facts.facts[_]
+]
+
+fact_type(f) := t if {
+  t := object.get(f, "fact_type", object.get(f, "kind", ""))
+}
+
+all_literal_kinds(f) if {
+  every kind in f.origin_kinds { kind == "literal" }
+}
+
+all_literal_values(f) if {
+  every val in f.origin_values { val != "" }
+}
+
+mixed_origin_guard(f) if {
+  some kind in f.origin_kinds
+  kind != "literal"
+}
+
+runtime_origin_guard(f) if {
+  count(f.origin_values) == 0
+}
+
+runtime_origin_guard(f) if {
+  some val in f.origin_values
+  val == ""
+}
+
+core_positive_condition(f) if {
+  fact_type(f) == "crypto_key_material_fact"
+  count(f.origin_kinds) > 0
+  count(f.origin_values) > 0
+  all_literal_kinds(f)
+  all_literal_values(f)
+}
+
+is_violation(f) if {
+  core_positive_condition(f)
+  not mixed_origin_guard(f)
+  not runtime_origin_guard(f)
+}
+
+findings := [v |
+  f := driver_facts[_]
+  is_violation(f)
+
+  file   := object.get(f, "file", object.get(f, "file_path", ""))
+  cls    := object.get(f, "class_name", object.get(f, "class", ""))
+  method := object.get(f, "method_name", object.get(f, "method", ""))
+  line   := object.get(f, "line", object.get(f, "line_number", 0))
+  col    := object.get(f, "col", 0)
+
+  span_raw := object.get(f, "span", {"start": {"line": line, "col": col}})
+
+  ftype   := object.get(f, "fact_type", object.get(f, "kind", ""))
+  method_id := object.get(f, "method_id", 0)
+  call_ast_id := object.get(f, "call_ast_id", 0)
+  sink   := object.get(f, "sink", "")
+
+  v := {
+    "policy_id":   policy_id,
+    "title":       title,
+    "severity":    severity,
+    "description": description,
+
+    "file":        file,
+    "span":        span_raw,
+
+    "fact_type":   ftype,
+    "method_name": method,
+    "method_id":   method_id,
+    "call_ast_id": call_ast_id,
+    "sink":        sink,
+  }
+]
+
+deny contains msg if {
+  v := findings[_]
+  file := object.get(v, "file", "")
+  span := object.get(v, "span", {})
+  start := object.get(span, "start", {})
+  line := object.get(start, "line", 0)
+  method := object.get(v, "method_name", "")
+  msg := sprintf("[%s] %s at %s:%d (method=%s)", [
+    v.policy_id,
+    v.title,
+    file,
+    line,
+    method,
+  ])
+}

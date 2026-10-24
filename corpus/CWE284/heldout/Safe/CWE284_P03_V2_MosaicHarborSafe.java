@@ -1,0 +1,37 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CWE284_P03_V2_MosaicHarborSafe {
+
+    private void applyMosaicHarborDeletion(String data, boolean authorized) throws SQLException {
+        Connection mosaicHarborConnection = DriverManager.getConnection("jdbc:hsqldb:mem:mosaicHarbor");
+        try {
+            PreparedStatement mosaicHarborDelete = mosaicHarborConnection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+            mosaicHarborDelete.setString(1, data);
+            if (authorized) {
+                mosaicHarborDelete.executeUpdate();
+            }
+        } finally {
+            mosaicHarborConnection.close();
+        }
+    }
+
+    public void deleteMosaicHarborAccount() throws SQLException {
+        String data;
+        if (true) {
+            data = System.getenv("MOSAIC_HARBOR_ACCOUNT_ID");
+        } else {
+            data = null;
+        }
+        String requester = System.getProperty("user.name");
+        boolean authorized = isAuthorized(data);
+        applyMosaicHarborDeletion(data, authorized);
+    }
+
+    private boolean isAuthorized(String accountId) {
+        String operator = System.getProperty("user.name");
+        return operator != null && operator.equals(accountId);
+    }
+}

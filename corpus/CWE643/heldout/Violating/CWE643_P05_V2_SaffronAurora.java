@@ -1,0 +1,47 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P05_V2_SaffronAurora {
+    private static boolean privateTrue = true;
+
+    private String saffronAuroraData;
+
+    private void sinkSaffronAurora() throws XPathExpressionException {
+        String data = saffronAuroraData;
+        String saffronAuroraXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            saffronAuroraXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            saffronAuroraXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] saffronAuroraTokens = data.split("||");
+            if (saffronAuroraTokens.length < 2) {
+                return;
+            }
+            String saffronAuroraUser = saffronAuroraTokens[0];
+            String saffronAuroraPass = saffronAuroraTokens[1];
+            XPath saffronAuroraXPath = XPathFactory.newInstance().newXPath();
+            InputSource saffronAuroraXml = new InputSource(saffronAuroraXmlFile);
+            String saffronAuroraQuery = "//users/user[name/text()='" + saffronAuroraUser
+                    + "' and pass/text()='" + saffronAuroraPass + "']" + "/secret/text()";
+            String saffronAuroraSecret = (String) saffronAuroraXPath.evaluate(saffronAuroraQuery, saffronAuroraXml, XPathConstants.STRING);
+            System.out.println(saffronAuroraSecret);
+        }
+    }
+
+    public void runSaffronAurora() throws XPathExpressionException {
+        String data;
+        if (privateTrue) {
+            data = System.getenv("SAFFRON_AURORA_ADD");
+        } else {
+            data = null;
+        }
+        saffronAuroraData = data;
+        sinkSaffronAurora();
+    }
+}

@@ -1,0 +1,38 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P03_V2_MosaicLotusSafe {
+    private static final int PRIVATE_STATIC_FINAL_FIVE = 5;
+
+    private void queryMosaicLotus(String data) throws SQLException {
+        Connection mosaicLotusConnection = DriverManager.getConnection("jdbc:hsqldb:mem:mosaicLotus");
+        Statement mosaicLotusStatement = null;
+        ResultSet mosaicLotusRows = null;
+        try {
+            mosaicLotusStatement = mosaicLotusConnection.createStatement();
+            mosaicLotusRows = mosaicLotusStatement.executeQuery("select * from users where name='" + data + "'");
+            System.out.println(mosaicLotusRows.getRow());
+        } finally {
+            if (mosaicLotusRows != null) {
+                mosaicLotusRows.close();
+            }
+            if (mosaicLotusStatement != null) {
+                mosaicLotusStatement.close();
+            }
+            mosaicLotusConnection.close();
+        }
+    }
+
+    public void runMosaicLotus() throws SQLException {
+        String data;
+        if (PRIVATE_STATIC_FINAL_FIVE == 5) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+        queryMosaicLotus(data);
+    }
+}

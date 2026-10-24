@@ -1,0 +1,24 @@
+import java.util.logging.Logger;
+
+public class CWE117_P07_V2_VelvetMantis {
+    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;
+
+    public void handleVelvetMantis() {
+        String data;
+        if (PRIVATE_STATIC_FINAL_TRUE) {
+            data = (new CWE117_P07_V2_VelvetMantisSource()).readVelvetMantis();
+        } else {
+            data = null;
+        }
+        Logger velvetMantisLogger = Logger.getLogger("velvetMantis.audit");
+        velvetMantisLogger.info("Login attempt for user " + data);
+    }
+}
+
+class CWE117_P07_V2_VelvetMantisSource {
+    public String readVelvetMantis() {
+        String data;
+        data = System.getenv("VELVET_MANTIS_USER");
+        return data;
+    }
+}

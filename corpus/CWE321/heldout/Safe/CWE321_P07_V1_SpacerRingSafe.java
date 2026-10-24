@@ -1,0 +1,23 @@
+import java.security.InvalidKeyException;
+import java.util.HashMap;
+
+import javax.crypto.spec.DESedeKeySpec;
+
+public class CWE321_P07_V1_SpacerRingSafe {
+
+    public byte[] wrapSpacerRing(byte[] spacerRingPayload, String spacerRingDial) throws InvalidKeyException {
+        String spacerRingMarque = spacerRingDial;
+        HashMap<Integer, String> spacerRingHamper = new HashMap<>();
+        spacerRingHamper.put(6, spacerRingMarque);
+        return new CWE321_P07_V1_SpacerRingSafePorter().sealSpacerRing(spacerRingHamper, spacerRingPayload);
+    }
+}
+
+class CWE321_P07_V1_SpacerRingSafePorter {
+
+    byte[] sealSpacerRing(HashMap<Integer, String> spacerRingHamper, byte[] spacerRingPayload) throws InvalidKeyException {
+        byte[] spacerRingPlait = spacerRingHamper.get(6).getBytes();
+        DESedeKeySpec spacerRingSpec = new DESedeKeySpec(spacerRingPlait);
+        return spacerRingPayload;
+    }
+}

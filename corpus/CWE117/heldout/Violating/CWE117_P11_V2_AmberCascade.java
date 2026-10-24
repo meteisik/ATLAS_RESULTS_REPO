@@ -1,0 +1,27 @@
+import java.util.HashMap;
+import java.util.logging.Logger;
+
+public class CWE117_P11_V2_AmberCascade {
+
+    public void handleAmberCascade() {
+        String data;
+        if (5 == 5) {
+            data = System.getenv("AMBER_CASCADE_USER");
+        } else {
+            data = null;
+        }
+        HashMap<Integer, String> dataHashMap = new HashMap<Integer, String>();
+        dataHashMap.put(0, data);
+        dataHashMap.put(1, data);
+        dataHashMap.put(2, data);
+        (new CWE117_P11_V2_AmberCascadeSink()).logAmberCascade(dataHashMap);
+    }
+}
+
+class CWE117_P11_V2_AmberCascadeSink {
+    public void logAmberCascade(HashMap<Integer, String> dataHashMap) {
+        String data = dataHashMap.get(2);
+        Logger amberCascadeLogger = Logger.getLogger("amberCascade.audit");
+        amberCascadeLogger.info("Login attempt for user " + data);
+    }
+}

@@ -1,0 +1,35 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P06_V1_NovaCascade {
+
+    public void runNovaCascade() throws SQLException {
+        String data;
+        data = System.getenv("NOVA_CASCADE_FILTER");
+        (new CWE89_P06_V1_NovaCascadeSink()).queryNovaCascade(data);
+    }
+}
+
+class CWE89_P06_V1_NovaCascadeSink {
+    public void queryNovaCascade(String data) throws SQLException {
+        Connection novaCascadeConnection = DriverManager.getConnection("jdbc:hsqldb:mem:novaCascade");
+        Statement novaCascadeStatement = null;
+        ResultSet novaCascadeRows = null;
+        try {
+            novaCascadeStatement = novaCascadeConnection.createStatement();
+            novaCascadeRows = novaCascadeStatement.executeQuery("select * from users where name='" + data + "'");
+            System.out.println(novaCascadeRows.getRow());
+        } finally {
+            if (novaCascadeRows != null) {
+                novaCascadeRows.close();
+            }
+            if (novaCascadeStatement != null) {
+                novaCascadeStatement.close();
+            }
+            novaCascadeConnection.close();
+        }
+    }
+}

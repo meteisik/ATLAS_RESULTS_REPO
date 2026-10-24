@@ -1,0 +1,40 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P05_V2_ObsidianRavenSafe {
+
+    private String obsidianRavenData;
+
+    private void queryObsidianRaven() throws SQLException {
+        String data = obsidianRavenData;
+        Connection obsidianRavenConnection = DriverManager.getConnection("jdbc:hsqldb:mem:obsidianRaven");
+        Statement obsidianRavenStatement = null;
+        ResultSet obsidianRavenRows = null;
+        try {
+            obsidianRavenStatement = obsidianRavenConnection.createStatement();
+            obsidianRavenRows = obsidianRavenStatement.executeQuery("select * from users where name='" + data + "'");
+            System.out.println(obsidianRavenRows.getRow());
+        } finally {
+            if (obsidianRavenRows != null) {
+                obsidianRavenRows.close();
+            }
+            if (obsidianRavenStatement != null) {
+                obsidianRavenStatement.close();
+            }
+            obsidianRavenConnection.close();
+        }
+    }
+
+    public void runObsidianRaven() throws SQLException {
+        String data;
+        while (true) {
+            data = "foo";
+            break;
+        }
+        obsidianRavenData = data;
+        queryObsidianRaven();
+    }
+}

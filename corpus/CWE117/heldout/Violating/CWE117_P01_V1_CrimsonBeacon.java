@@ -1,0 +1,11 @@
+import java.util.logging.Logger;
+
+public class CWE117_P01_V1_CrimsonBeacon {
+
+    public void handleCrimsonBeacon() {
+        String data;
+        data = System.getenv("CRIMSON_BEACON_USER");
+        Logger crimsonBeaconLogger = Logger.getLogger("crimsonBeacon.audit");
+        crimsonBeaconLogger.info("Login attempt for user " + data);
+    }
+}

@@ -1,0 +1,53 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P09_V2_VelvetCascadeSafe {
+    private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;
+
+    static class Container {
+        public String containerOne;
+    }
+
+    public void runVelvetCascade() throws XPathExpressionException {
+        String data;
+        if (PRIVATE_STATIC_FINAL_TRUE) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+        Container dataContainer = new Container();
+        dataContainer.containerOne = data;
+        (new CWE643_P09_V2_VelvetCascadeSafeSink()).sinkVelvetCascade(dataContainer);
+    }
+}
+
+class CWE643_P09_V2_VelvetCascadeSafeSink {
+
+    public void sinkVelvetCascade(CWE643_P09_V2_VelvetCascadeSafe.Container dataContainer) throws XPathExpressionException {
+        String data = dataContainer.containerOne;
+        String velvetCascadeXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            velvetCascadeXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            velvetCascadeXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] velvetCascadeTokens = data.split("||");
+            if (velvetCascadeTokens.length < 2) {
+                return;
+            }
+            String velvetCascadeUser = velvetCascadeTokens[0];
+            String velvetCascadePass = velvetCascadeTokens[1];
+            XPath velvetCascadeXPath = XPathFactory.newInstance().newXPath();
+            InputSource velvetCascadeXml = new InputSource(velvetCascadeXmlFile);
+            String velvetCascadeQuery = "//users/user[name/text()='" + velvetCascadeUser
+                    + "' and pass/text()='" + velvetCascadePass + "']" + "/secret/text()";
+            String velvetCascadeSecret = (String) velvetCascadeXPath.evaluate(velvetCascadeQuery, velvetCascadeXml, XPathConstants.STRING);
+            System.out.println(velvetCascadeSecret);
+        }
+    }
+}

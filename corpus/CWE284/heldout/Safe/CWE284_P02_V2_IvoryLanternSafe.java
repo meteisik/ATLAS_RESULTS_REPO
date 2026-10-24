@@ -1,0 +1,50 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CWE284_P02_V2_IvoryLanternSafe {
+    private static final class IO {
+        static final boolean STATIC_FINAL_TRUE = true;
+        static final int STATIC_FINAL_FIVE = 5;
+        static boolean staticTrue = true;
+        static int staticFive = 5;
+        static boolean staticReturnsTrue() { return true; }
+    }
+
+    public void deleteIvoryLanternAccount() throws SQLException {
+        String dataCopy;
+        boolean authorizedCopy;
+        {
+            String data;
+            if (IO.staticTrue) {
+                data = System.getenv("IVORY_LANTERN_ACCOUNT_ID");
+            } else {
+                data = null;
+            }
+            dataCopy = data;
+            authorizedCopy = isAuthorized(data);
+        }
+        {
+            String data = dataCopy;
+            boolean authorized = authorizedCopy;
+            Connection ivoryLanternConnection = DriverManager.getConnection("jdbc:hsqldb:mem:ivoryLantern");
+            try {
+                PreparedStatement ivoryLanternDelete = ivoryLanternConnection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+                ivoryLanternDelete.setString(1, data);
+                if (authorized) {
+                    ivoryLanternDelete.executeUpdate();
+                } else {
+                    throw new SecurityException("delete of account " + data + " is not authorized");
+                }
+            } finally {
+                ivoryLanternConnection.close();
+            }
+        }
+    }
+
+    private boolean isAuthorized(String accountId) {
+        String operator = System.getProperty("user.name");
+        return operator != null && operator.equals(accountId);
+    }
+}

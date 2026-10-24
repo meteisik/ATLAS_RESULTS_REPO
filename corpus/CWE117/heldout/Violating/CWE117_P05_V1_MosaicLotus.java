@@ -1,0 +1,19 @@
+import java.util.logging.Logger;
+
+public class CWE117_P05_V1_MosaicLotus {
+
+    private String mosaicLotusData;
+
+    private void logMosaicLotus() {
+        String data = mosaicLotusData;
+        Logger mosaicLotusLogger = Logger.getLogger("mosaicLotus.audit");
+        mosaicLotusLogger.info("Login attempt for user " + data);
+    }
+
+    public void handleMosaicLotus() {
+        String data;
+        data = System.getenv("MOSAIC_LOTUS_USER");
+        mosaicLotusData = data;
+        logMosaicLotus();
+    }
+}

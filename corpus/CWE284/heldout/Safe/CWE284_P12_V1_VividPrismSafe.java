@@ -1,0 +1,41 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CWE284_P12_V1_VividPrismSafe {
+
+    public void deleteVividPrismAccount() throws SQLException {
+        String data;
+        data = System.getenv("VIVID_PRISM_ACCOUNT_ID");
+        boolean authorized = isAuthorized(data);
+        CWE284_P12_V1_VividPrismSafeBase baseObject = new CWE284_P12_V1_VividPrismSafeRemover();
+        baseObject.action(data, authorized);
+    }
+
+    private boolean isAuthorized(String accountId) {
+        String operator = System.getProperty("user.name");
+        return operator != null && operator.equals(accountId);
+    }
+}
+
+abstract class CWE284_P12_V1_VividPrismSafeBase {
+    public abstract void action(String data, boolean authorized) throws SQLException;
+}
+
+class CWE284_P12_V1_VividPrismSafeRemover extends CWE284_P12_V1_VividPrismSafeBase {
+    public void action(String data, boolean authorized) throws SQLException {
+        Connection vividPrismConnection = DriverManager.getConnection("jdbc:hsqldb:mem:vividPrism");
+        try {
+            PreparedStatement vividPrismDelete = vividPrismConnection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+            vividPrismDelete.setString(1, data);
+            if (!authorized) {
+                System.err.println("delete of account " + data + " refused");
+            } else {
+                vividPrismDelete.executeUpdate();
+            }
+        } finally {
+            vividPrismConnection.close();
+        }
+    }
+}

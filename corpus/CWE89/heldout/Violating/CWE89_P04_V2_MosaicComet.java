@@ -1,0 +1,38 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CWE89_P04_V2_MosaicComet {
+
+    private String loadMosaicComet() {
+        String data;
+        if (5 == 5) {
+            data = System.getenv("MOSAIC_COMET_FILTER");
+        } else {
+            data = null;
+        }
+        return data;
+    }
+
+    public void runMosaicComet() throws SQLException {
+        String data = loadMosaicComet();
+        Connection mosaicCometConnection = DriverManager.getConnection("jdbc:hsqldb:mem:mosaicComet");
+        Statement mosaicCometStatement = null;
+        ResultSet mosaicCometRows = null;
+        try {
+            mosaicCometStatement = mosaicCometConnection.createStatement();
+            mosaicCometRows = mosaicCometStatement.executeQuery("select * from users where name='" + data + "'");
+            System.out.println(mosaicCometRows.getRow());
+        } finally {
+            if (mosaicCometRows != null) {
+                mosaicCometRows.close();
+            }
+            if (mosaicCometStatement != null) {
+                mosaicCometStatement.close();
+            }
+            mosaicCometConnection.close();
+        }
+    }
+}

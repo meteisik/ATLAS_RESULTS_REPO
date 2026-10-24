@@ -1,0 +1,121 @@
+campaign_id,hardware,cohort,gpu,policy,run,condition,safe_controls,generator,invocation,start,end,recorded_timezone,seconds,exit_code,kind
+primary__1safe__r1__CWE22__CWE22_1safe_20260930T174334_cont,Local RTX,primary,,CWE22,1,1safe,1,gpt-oss:20b,1,2026-09-30T15:54:44,2026-09-30T15:54:44,local,0,-1,parent_chain
+primary__1safe__r1__CWE22__CWE22_1safe_20260930T174334_cont,Local RTX,primary,,CWE22,1,1safe,1,gpt-oss:20b,2,2026-09-30T17:43:35,2026-09-30T18:50:41,local,4026.783337,0,continuation
+primary__3safe__r1__CWE22__CWE22_3safe_20260930T213717,Local RTX,primary,,CWE22,1,3safe,3,gpt-oss:20b,1,2026-09-30T21:37:18,2026-09-30T22:52:36,local,4518.643768,0,start
+primary__1safe__r1__CWE89__CWE89_1safe_20261001T112331_cont,Local RTX,primary,,CWE89,1,1safe,1,gpt-oss:20b,1,2026-09-30T23:15:36,2026-09-30T23:15:36,local,0,-1,parent_chain
+primary__1safe__r1__CWE89__CWE89_1safe_20261001T112331_cont,Local RTX,primary,,CWE89,1,1safe,1,gpt-oss:20b,2,2026-10-01T11:23:31,2026-10-01T11:27:44,local,252.814406,0,continuation
+primary__3safe__r1__CWE89__CWE89_3safe_20261001T113835,Local RTX,primary,,CWE89,1,3safe,3,gpt-oss:20b,1,2026-10-01T11:38:40,2026-10-01T12:41:29,local,3768.693624,0,start
+primary__1safe__r1__CWE117__CWE117_1safe_20260929T012735_cont,Local RTX,primary,,CWE117,1,1safe,1,gpt-oss:20b,1,2026-09-28T21:15:59,2026-09-28T21:15:59,local,0,-1,parent_chain
+primary__1safe__r1__CWE117__CWE117_1safe_20260929T012735_cont,Local RTX,primary,,CWE117,1,1safe,1,gpt-oss:20b,2,2026-09-29T01:27:36,2026-09-29T01:35:31,local,475.848839,0,continuation
+primary__3safe__r1__CWE117__CWE117_3safe_20260929T233934_cont,Local RTX,primary,,CWE117,1,3safe,3,gpt-oss:20b,1,2026-09-29T21:30:30,2026-09-29T21:30:30,local,0,-1,parent_chain
+primary__3safe__r1__CWE117__CWE117_3safe_20260929T233934_cont,Local RTX,primary,,CWE117,1,3safe,3,gpt-oss:20b,2,2026-09-29T23:39:34,2026-09-30T00:03:03,local,1409.365399,0,continuation
+primary__1safe__r1__CWE284__CWE284_1safe_20260928T013509_cont,Local RTX,primary,,CWE284,1,1safe,1,gpt-oss:20b,1,2026-09-26T15:57:39,2026-09-26T15:57:39,local,0,-1,parent_chain
+primary__1safe__r1__CWE284__CWE284_1safe_20260928T013509_cont,Local RTX,primary,,CWE284,1,1safe,1,gpt-oss:20b,2,2026-09-28T01:35:09,2026-09-28T01:38:53,local,224.725788,0,continuation
+primary__3safe__r1__CWE284__CWE284_3safe_20260928T183651_cont,Local RTX,primary,,CWE284,1,3safe,3,gpt-oss:20b,1,2026-09-28T03:13:29,2026-09-28T03:13:29,local,0,-1,parent_chain
+primary__3safe__r1__CWE284__CWE284_3safe_20260928T183651_cont,Local RTX,primary,,CWE284,1,3safe,3,gpt-oss:20b,2,2026-09-28T18:36:51,2026-09-28T18:41:34,local,282.544544,0,continuation
+primary__3safe__r1__CWE321__CWE321_3safe_20260925T170453,Local RTX,primary,,CWE321,1,3safe,3,gpt-oss:20b,1,2026-09-25T17:04:53,2026-09-25T18:43:02,local,5889.0,1,
+primary__3safe__r1__CWE321__CWE321_3safe_20260925T170453,Local RTX,primary,,CWE321,1,3safe,3,gpt-oss:20b,2,2026-09-25T18:47:36,2026-09-25T19:20:57,local,2001.0,0,
+primary__1safe__r1__CWE643__CWE643_1safe_20261004T125007_cont,Local RTX,primary,,CWE643,1,1safe,1,gpt-oss:20b,1,2026-10-03T22:05:13,2026-10-03T22:05:13,local,0,-1,parent_chain
+primary__1safe__r1__CWE643__CWE643_1safe_20261004T125007_cont,Local RTX,primary,,CWE643,1,1safe,1,gpt-oss:20b,2,2026-10-04T12:50:07,2026-10-04T13:03:52,local,824.881036,0,continuation
+primary__3safe__r1__CWE643__CWE643_3safe_20261005T125411_cont,Local RTX,primary,,CWE643,1,3safe,3,gpt-oss:20b,1,2026-10-05T11:47:14,2026-10-05T11:47:14,local,0,-1,parent_chain
+primary__3safe__r1__CWE643__CWE643_3safe_20261005T125411_cont,Local RTX,primary,,CWE643,1,3safe,3,gpt-oss:20b,2,2026-10-05T12:54:11,2026-10-05T13:45:07,local,3055.56318,0,continuation
+primary__1safe__r2__CWE321__CWE321_1safe_20261010T121551,Local RTX,primary,,CWE321,2,1safe,1,gpt-oss:20b,1,2026-10-10T12:15:51,2026-10-10T13:43:52,local,5281.0107,0,start
+primary__1safe__r2__CWE89__CWE89_1safe_20261011T085644,Local RTX,primary,,CWE89,2,1safe,1,gpt-oss:20b,1,2026-10-11T08:56:44,2026-10-11T09:32:38,local,2154.240013,0,start
+primary__1safe__r2__CWE22__CWE22_1safe_20261011T174733_cont,Local RTX,primary,,CWE22,2,1safe,1,gpt-oss:20b,1,2026-10-11T09:38:37,2026-10-11T09:38:37,local,0,-1,parent_chain
+primary__1safe__r2__CWE22__CWE22_1safe_20261011T174733_cont,Local RTX,primary,,CWE22,2,1safe,1,gpt-oss:20b,2,2026-10-11T17:47:33,2026-10-11T18:42:19,local,3285.875863,0,continuation
+primary__1safe__r2__CWE643__CWE643_1safe_20261012T004041_cont,Local RTX,primary,,CWE643,2,1safe,1,gpt-oss:20b,1,2026-10-11T18:50:17,2026-10-11T18:50:17,local,0,-1,parent_chain
+primary__1safe__r2__CWE643__CWE643_1safe_20261012T004041_cont,Local RTX,primary,,CWE643,2,1safe,1,gpt-oss:20b,2,2026-10-12T00:40:41,2026-10-12T02:12:54,local,5533.374715,0,continuation
+primary__1safe__r2__CWE117__CWE117_1safe_20261012T021957,Local RTX,primary,,CWE117,2,1safe,1,gpt-oss:20b,1,2026-10-12T02:20:01,2026-10-12T03:27:52,local,4071.630543,0,start
+primary__1safe__r2__CWE284__CWE284_1safe_20261012T073324_cont,Local RTX,primary,,CWE284,2,1safe,1,gpt-oss:20b,1,2026-10-12T03:49:45,2026-10-12T03:49:45,local,0,-1,parent_chain
+primary__1safe__r2__CWE284__CWE284_1safe_20261012T073324_cont,Local RTX,primary,,CWE284,2,1safe,1,gpt-oss:20b,2,2026-10-12T07:33:24,2026-10-12T09:02:48,local,5363.962067,0,continuation
+primary__3safe__r2__CWE321__CWE321_3safe_20261012T121212,Local RTX,primary,,CWE321,2,3safe,3,gpt-oss:20b,1,2026-10-12T12:12:17,2026-10-12T14:14:14,local,7316.206267,0,start
+primary__3safe__r2__CWE89__CWE89_3safe_20261012T141842,Local RTX,primary,,CWE89,2,3safe,3,gpt-oss:20b,1,2026-10-12T14:18:48,2026-10-12T15:40:30,local,4902.437641,0,start
+primary__3safe__r2__CWE22__CWE22_3safe_20261012T154651,Local RTX,primary,,CWE22,2,3safe,3,gpt-oss:20b,1,2026-10-12T15:46:51,2026-10-12T16:46:55,local,3604.002073,0,start
+primary__3safe__r2__CWE643__CWE643_3safe_20261012T220233_cont,Local RTX,primary,,CWE643,2,3safe,3,gpt-oss:20b,1,2026-10-12T16:55:53,2026-10-12T16:55:53,local,0,-1,parent_chain
+primary__3safe__r2__CWE643__CWE643_3safe_20261012T220233_cont,Local RTX,primary,,CWE643,2,3safe,3,gpt-oss:20b,2,2026-10-12T22:02:33,2026-10-13T01:40:42,local,13089.12548,1,continuation
+primary__3safe__r2__CWE117__CWE117_3safe_20261013T014609,Local RTX,primary,,CWE117,2,3safe,3,gpt-oss:20b,1,2026-10-13T01:46:14,2026-10-13T02:37:26,local,3072.291785,0,start
+primary__3safe__r2__CWE284__CWE284_3safe_20261013T024246,Local RTX,primary,,CWE284,2,3safe,3,gpt-oss:20b,1,2026-10-13T02:42:52,2026-10-13T03:40:23,local,3450.948171,0,start
+ablation__full__r1__CWE117__CWE117_3safe_full_r01,A100,ablation,4,CWE117,1,full,3,gpt-oss:20b,1,2026-10-16T01:33:13,2026-10-16T01:38:33,utc,320.064795,0,
+ablation__full__r2__CWE117__CWE117_3safe_full_r02,A100,ablation,4,CWE117,2,full,3,gpt-oss:20b,1,2026-10-16T04:51:16,2026-10-16T04:57:11,utc,355.097035,0,
+ablation__nofm__r1__CWE117__CWE117_3safe_nofm_r01,A100,ablation,4,CWE117,1,nofm,3,gpt-oss:20b,1,2026-10-16T01:38:33,2026-10-16T03:30:20,utc,6706.711444,0,
+ablation__nofm__r2__CWE117__CWE117_3safe_nofm_r02,A100,ablation,4,CWE117,2,nofm,3,gpt-oss:20b,1,2026-10-16T03:30:20,2026-10-16T04:51:16,utc,4856.313893,0,
+ablation__full__r1__CWE22__CWE22_3safe_full_r01,A100,ablation,2,CWE22,1,full,3,gpt-oss:20b,1,2026-10-16T01:33:13,2026-10-16T03:07:19,utc,5646.338245,0,
+ablation__full__r2__CWE22__CWE22_3safe_full_r02,A100,ablation,2,CWE22,2,full,3,gpt-oss:20b,1,2026-10-16T07:16:29,2026-10-16T08:45:21,utc,5331.850864,0,
+ablation__nofm__r1__CWE22__CWE22_3safe_nofm_r01,A100,ablation,2,CWE22,1,nofm,3,gpt-oss:20b,1,2026-10-16T03:07:19,2026-10-16T05:16:17,utc,7737.49624,0,
+ablation__nofm__r2__CWE22__CWE22_3safe_nofm_r02,A100,ablation,2,CWE22,2,nofm,3,gpt-oss:20b,1,2026-10-16T05:16:17,2026-10-16T07:16:29,utc,7211.939331,0,
+ablation__full__r1__CWE284__CWE284_3safe_full_r01,A100,ablation,5,CWE284,1,full,3,gpt-oss:20b,1,2026-10-16T01:33:13,2026-10-16T04:04:15,utc,9062.38358,0,
+ablation__full__r2__CWE284__CWE284_3safe_full_r02,A100,ablation,5,CWE284,2,full,3,gpt-oss:20b,1,2026-10-16T06:59:14,2026-10-16T09:36:57,utc,9463.194349,0,
+ablation__nofm__r1__CWE284__CWE284_3safe_nofm_r01,A100,ablation,5,CWE284,1,nofm,3,gpt-oss:20b,1,2026-10-16T04:04:16,2026-10-16T05:23:47,utc,4771.619305,0,
+ablation__nofm__r2__CWE284__CWE284_3safe_nofm_r02,A100,ablation,5,CWE284,2,nofm,3,gpt-oss:20b,1,2026-10-16T05:23:47,2026-10-16T06:59:14,utc,5726.474425,0,
+ablation__full__r1__CWE321__CWE321_3safe_full_r01,A100,ablation,0,CWE321,1,full,3,gpt-oss:20b,1,2026-10-16T01:33:13,2026-10-16T03:56:25,utc,8592.19179,0,
+ablation__full__r2__CWE321__CWE321_3safe_full_r02,A100,ablation,0,CWE321,2,full,3,gpt-oss:20b,1,2026-10-16T07:17:49,2026-10-16T10:06:53,utc,10143.573221,0,
+ablation__nofm__r1__CWE321__CWE321_3safe_nofm_r01,A100,ablation,0,CWE321,1,nofm,3,gpt-oss:20b,1,2026-10-16T03:56:25,2026-10-16T05:44:17,utc,6472.144848,0,
+ablation__nofm__r2__CWE321__CWE321_3safe_nofm_r02,A100,ablation,0,CWE321,2,nofm,3,gpt-oss:20b,1,2026-10-16T05:44:18,2026-10-16T07:17:49,utc,5611.508874,0,
+ablation__full__r1__CWE643__CWE643_3safe_full_r01,A100,ablation,3,CWE643,1,full,3,gpt-oss:20b,1,2026-10-16T01:33:13,2026-10-16T07:51:30,utc,22696.555497,0,
+ablation__full__r2__CWE643__CWE643_3safe_full_r02,A100,ablation,3,CWE643,2,full,3,gpt-oss:20b,1,2026-10-16T14:48:02,2026-10-16T20:52:51,utc,21889.204922,0,
+ablation__nofm__r1__CWE643__CWE643_3safe_nofm_r01,A100,ablation,3,CWE643,1,nofm,3,gpt-oss:20b,1,2026-10-16T07:51:30,2026-10-16T10:58:49,utc,11239.029435,0,
+ablation__nofm__r2__CWE643__CWE643_3safe_nofm_r02,A100,ablation,3,CWE643,2,nofm,3,gpt-oss:20b,1,2026-10-16T10:58:49,2026-10-16T14:48:02,utc,13752.709985,0,
+ablation__full__r1__CWE89__CWE89_3safe_full_r01,A100,ablation,1,CWE89,1,full,3,gpt-oss:20b,1,2026-10-16T01:33:13,2026-10-16T02:47:04,utc,4431.01882,0,
+ablation__full__r2__CWE89__CWE89_3safe_full_r02,A100,ablation,1,CWE89,2,full,3,gpt-oss:20b,1,2026-10-16T06:06:38,2026-10-16T07:54:00,utc,6441.846848,0,
+ablation__nofm__r1__CWE89__CWE89_3safe_nofm_r01,A100,ablation,1,CWE89,1,nofm,3,gpt-oss:20b,1,2026-10-16T02:47:04,2026-10-16T04:26:06,utc,5941.698969,0,
+ablation__nofm__r2__CWE89__CWE89_3safe_nofm_r02,A100,ablation,1,CWE89,2,nofm,3,gpt-oss:20b,1,2026-10-16T04:26:06,2026-10-16T06:06:38,utc,6031.987397,0,
+onesafe_a100__1safe__r1__CWE117__CWE117_1safe_full_r01,A100,onesafe_a100,6,CWE117,1,1safe,1,gpt-oss:20b,1,2026-10-18T19:14:15,2026-10-18T21:09:37,utc,6921.859879,0,
+onesafe_a100__1safe__r2__CWE117__CWE117_1safe_full_r02,A100,onesafe_a100,6,CWE117,2,1safe,1,gpt-oss:20b,1,2026-10-18T21:09:37,2026-10-18T22:38:29,utc,5332.149154,0,
+onesafe_a100__1safe__r1__CWE22__CWE22_1safe_full_r01,A100,onesafe_a100,2,CWE22,1,1safe,1,gpt-oss:20b,1,2026-10-18T19:14:15,2026-10-18T20:58:22,utc,6246.62563,0,
+onesafe_a100__1safe__r2__CWE22__CWE22_1safe_full_r02,A100,onesafe_a100,2,CWE22,2,1safe,1,gpt-oss:20b,1,2026-10-18T20:58:22,2026-10-18T22:40:10,utc,6107.851916,0,
+onesafe_a100__1safe__r1__CWE284__CWE284_1safe_full_r01,A100,onesafe_a100,7,CWE284,1,1safe,1,gpt-oss:20b,1,2026-10-18T19:14:15,2026-10-18T19:49:06,utc,2090.510362,0,
+onesafe_a100__1safe__r2__CWE284__CWE284_1safe_full_r02,A100,onesafe_a100,7,CWE284,2,1safe,1,gpt-oss:20b,1,2026-10-18T19:49:06,2026-10-18T21:31:18,utc,6131.683305,0,
+onesafe_a100__1safe__r1__CWE321__CWE321_1safe_full_r01,A100,onesafe_a100,0,CWE321,1,1safe,1,gpt-oss:20b,1,2026-10-18T19:14:15,2026-10-18T21:31:43,utc,8247.646263,0,
+onesafe_a100__1safe__r2__CWE321__CWE321_1safe_full_r02,A100,onesafe_a100,0,CWE321,2,1safe,1,gpt-oss:20b,1,2026-10-18T21:31:43,2026-10-19T01:51:17,utc,15574.102653,1,
+onesafe_a100__1safe__r1__CWE643__CWE643_1safe_full_r01,A100,onesafe_a100,3,CWE643,1,1safe,1,gpt-oss:20b,1,2026-10-18T19:14:15,2026-10-19T01:24:47,utc,22231.489591,0,
+onesafe_a100__1safe__r2__CWE643__CWE643_1safe_full_r02,A100,onesafe_a100,3,CWE643,2,1safe,1,gpt-oss:20b,1,2026-10-19T01:24:47,2026-10-19T10:15:42,utc,31855.219661,1,
+onesafe_a100__1safe__r1__CWE89__CWE89_1safe_full_r01,A100,onesafe_a100,1,CWE89,1,1safe,1,gpt-oss:20b,1,2026-10-18T19:14:15,2026-10-18T20:57:12,utc,6176.555859,0,
+onesafe_a100__1safe__r2__CWE89__CWE89_1safe_full_r02,A100,onesafe_a100,1,CWE89,2,1safe,1,gpt-oss:20b,1,2026-10-18T20:57:12,2026-10-18T22:07:34,utc,4221.688597,0,
+generator__gpt-oss_120b__r1__CWE117__CWE117_3safe_full_r01,A100,generator,0,CWE117,1,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T15:41:29,2026-10-17T23:55:46,utc,29657.614717,1,
+generator__gpt-oss_120b__r2__CWE117__CWE117_3safe_full_r02,A100,generator,1,CWE117,2,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T02:04:51,2026-10-17T02:12:16,utc,445.08446,0,
+generator__gpt-oss_120b__r1__CWE22__CWE22_3safe_full_r01,A100,generator,0,CWE22,1,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T03:38:28,2026-10-17T05:39:49,utc,7281.65626,0,
+generator__gpt-oss_120b__r2__CWE22__CWE22_3safe_full_r02,A100,generator,1,CWE22,2,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T05:33:29,2026-10-17T07:39:11,utc,7541.820209,0,
+generator__gpt-oss_120b__r1__CWE284__CWE284_3safe_full_r01,A100,generator,0,CWE284,1,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T23:55:46,2026-10-18T02:41:19,utc,9932.324554,0,
+generator__gpt-oss_120b__r2__CWE284__CWE284_3safe_full_r02,A100,generator,1,CWE284,2,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-16T22:53:04,2026-10-17T02:04:51,utc,11507.757372,0,
+generator__gpt-oss_120b__r1__CWE321__CWE321_3safe_full_r01,A100,generator,0,CWE321,1,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-16T22:53:04,2026-10-17T01:54:06,utc,10862.519549,0,
+generator__gpt-oss_120b__r2__CWE321__CWE321_3safe_full_r02,A100,generator,1,CWE321,2,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T09:25:18,2026-10-17T13:03:46,utc,13108.197989,0,
+generator__gpt-oss_120b__r1__CWE643__CWE643_3safe_full_r01,A100,generator,0,CWE643,1,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T05:39:49,2026-10-17T15:41:29,utc,36099.218011,1,
+generator__gpt-oss_120b__r2__CWE643__CWE643_3safe_full_r02,A100,generator,1,CWE643,2,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T02:12:16,2026-10-17T05:33:29,utc,12072.653011,0,
+generator__gpt-oss_120b__r1__CWE89__CWE89_3safe_full_r01,A100,generator,0,CWE89,1,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T01:54:06,2026-10-17T03:38:28,utc,6261.34255,0,
+generator__gpt-oss_120b__r2__CWE89__CWE89_3safe_full_r02,A100,generator,1,CWE89,2,gpt-oss:120b,3,gpt-oss:120b,1,2026-10-17T07:39:11,2026-10-17T09:25:18,utc,6366.441195,0,
+generator__gemma4_31b__r1__CWE117__CWE117_3safe_full_r01,A100,generator,2,CWE117,1,gemma4:31b,3,gemma4:31b,1,2026-10-17T17:07:50,2026-10-18T06:31:32,utc,48222.406375,1,
+generator__gemma4_31b__r2__CWE117__CWE117_3safe_full_r02,A100,generator,3,CWE117,2,gemma4:31b,3,gemma4:31b,1,2026-10-17T03:01:54,2026-10-17T16:21:44,utc,47990.556209,1,
+generator__gemma4_31b__r1__CWE22__CWE22_3safe_full_r01,A100,generator,2,CWE22,1,gemma4:31b,3,gemma4:31b,1,2026-10-17T06:59:47,2026-10-17T10:19:59,utc,12012.800713,0,
+generator__gemma4_31b__r2__CWE22__CWE22_3safe_full_r02,A100,generator,3,CWE22,2,gemma4:31b,3,gemma4:31b,1,2026-10-17T22:29:35,2026-10-18T02:20:08,utc,13833.599021,0,
+generator__gemma4_31b__r1__CWE284__CWE284_3safe_full_r01,A100,generator,2,CWE284,1,gemma4:31b,3,gemma4:31b,1,2026-10-18T06:31:32,2026-10-18T09:19:05,utc,10052.685956,0,
+generator__gemma4_31b__r2__CWE284__CWE284_3safe_full_r02,A100,generator,3,CWE284,2,gemma4:31b,3,gemma4:31b,1,2026-10-16T22:54:20,2026-10-17T03:01:53,utc,14853.313103,0,
+generator__gemma4_31b__r1__CWE321__CWE321_3safe_full_r01,A100,generator,2,CWE321,1,gemma4:31b,3,gemma4:31b,1,2026-10-16T22:54:20,2026-10-17T03:42:29,utc,17288.840615,1,
+generator__gemma4_31b__r2__CWE321__CWE321_3safe_full_r02,A100,generator,3,CWE321,2,gemma4:31b,3,gemma4:31b,1,2026-10-18T04:28:50,2026-10-18T10:35:27,utc,21996.435184,0,
+generator__gemma4_31b__r1__CWE643__CWE643_3safe_full_r01,A100,generator,2,CWE643,1,gemma4:31b,3,gemma4:31b,1,2026-10-17T10:19:59,2026-10-17T17:07:50,utc,24470.372597,0,
+generator__gemma4_31b__r2__CWE643__CWE643_3safe_full_r02,A100,generator,3,CWE643,2,gemma4:31b,3,gemma4:31b,1,2026-10-17T16:21:44,2026-10-17T22:29:35,utc,22070.459233,1,
+generator__gemma4_31b__r1__CWE89__CWE89_3safe_full_r01,A100,generator,2,CWE89,1,gemma4:31b,3,gemma4:31b,1,2026-10-17T03:43:54,2026-10-17T06:59:47,utc,11752.394899,0,
+generator__gemma4_31b__r2__CWE89__CWE89_3safe_full_r02,A100,generator,3,CWE89,2,gemma4:31b,3,gemma4:31b,1,2026-10-18T02:20:08,2026-10-18T04:28:50,utc,7722.025797,0,
+generator__qwen3.8_27b__r1__CWE117__CWE117_3safe_full_r01,A100,generator,4,CWE117,1,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-17T10:48:51,2026-10-18T01:28:28,utc,52777.528559,1,
+generator__qwen3.8_27b__r2__CWE117__CWE117_3safe_full_r02,A100,generator,5,CWE117,2,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-17T17:35:26,2026-10-18T08:54:25,utc,55138.272538,1,
+generator__qwen3.8_27b__r1__CWE22__CWE22_3safe_full_r01,A100,generator,4,CWE22,1,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-17T05:34:01,2026-10-17T07:56:03,utc,8522.001612,0,
+generator__qwen3.8_27b__r2__CWE22__CWE22_3safe_full_r02,A100,generator,5,CWE22,2,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-18T15:17:20,2026-10-18T17:29:47,utc,7946.683024,0,
+generator__qwen3.8_27b__r1__CWE284__CWE284_3safe_full_r01,A100,generator,4,CWE284,1,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-18T04:59:11,2026-10-19T00:21:07,utc,69715.496967,1,
+generator__qwen3.8_27b__r2__CWE284__CWE284_3safe_full_r02,A100,generator,5,CWE284,2,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-16T22:55:51,2026-10-17T17:35:26,utc,67175.13333,1,
+generator__qwen3.8_27b__r1__CWE321__CWE321_3safe_full_r01,A100,generator,4,CWE321,1,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-16T22:55:51,2026-10-17T03:51:20,utc,17728.690542,0,
+generator__qwen3.8_27b__r2__CWE321__CWE321_3safe_full_r02,A100,generator,5,CWE321,2,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-18T19:10:08,2026-10-18T22:52:50,utc,13362.510307,0,
+generator__qwen3.8_27b__r1__CWE643__CWE643_3safe_full_r01,A100,generator,4,CWE643,1,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-17T07:56:03,2026-10-17T10:48:50,utc,10367.280123,0,
+generator__qwen3.8_27b__r2__CWE643__CWE643_3safe_full_r02,A100,generator,5,CWE643,2,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-18T13:35:34,2026-10-18T15:17:20,utc,6106.315171,0,
+generator__qwen3.8_27b__r1__CWE89__CWE89_3safe_full_r01,A100,generator,4,CWE89,1,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-17T03:51:20,2026-10-17T05:34:01,utc,6161.238645,0,
+generator__qwen3.8_27b__r2__CWE89__CWE89_3safe_full_r02,A100,generator,5,CWE89,2,qwen3.8:27b,3,qwen3.8:27b,1,2026-10-18T17:29:47,2026-10-18T19:10:08,utc,6021.107003,0,
+generator__granite4.2_30b__r2__CWE117__CWE117_3safe_full_r02,A100,generator,7,CWE117,2,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T06:35:27,2026-10-17T15:22:24,utc,31617.215018,0,
+generator__granite4.2_30b__r1__CWE22__CWE22_3safe_full_r01,A100,generator,6,CWE22,1,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T11:46:21,2026-10-17T16:22:25,utc,16563.59358,0,
+generator__granite4.2_30b__r2__CWE22__CWE22_3safe_full_r02,A100,generator,7,CWE22,2,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T21:10:54,2026-10-18T02:43:39,utc,19964.702333,0,
+generator__granite4.2_30b__r2__CWE284__CWE284_3safe_full_r02,A100,generator,7,CWE284,2,granite4.2:30b,3,granite4.2:30b,1,2026-10-16T22:57:36,2026-10-17T06:35:27,utc,27470.79699,0,
+generator__granite4.2_30b__r1__CWE321__CWE321_3safe_full_r01,A100,generator,6,CWE321,1,granite4.2:30b,3,granite4.2:30b,1,2026-10-16T22:57:36,2026-10-17T07:26:03,utc,30506.602327,0,
+generator__granite4.2_30b__r1__CWE643__CWE643_3safe_full_r01,A100,generator,6,CWE643,1,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T16:22:25,2026-10-18T12:22:32,utc,72007.300538,-15,
+generator__granite4.2_30b__r2__CWE643__CWE643_3safe_full_r02,A100,generator,7,CWE643,2,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T15:22:24,2026-10-17T21:10:54,utc,20909.949969,0,
+generator__granite4.2_30b__r1__CWE89__CWE89_3safe_full_r01,A100,generator,6,CWE89,1,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T07:26:03,2026-10-17T11:46:21,utc,15618.619154,0,
+generator__granite4.2_30b__r0__CWE321__CWE321_3safe,A100,generator,1,CWE321,0,granite4.2:30b,3,granite4.2:30b,1,2026-10-17T16:35:10,2026-10-18T00:30:41,utc,28530.997109,0,
+generator__granite4.2_30b__r0__CWE89__CWE89_3safe,A100,generator,1,CWE89,0,granite4.2:30b,3,granite4.2:30b,1,2026-10-18T00:30:41,2026-10-18T04:26:49,utc,14167.992184,0,
+generator__granite4.2_30b__r0__CWE117__CWE117_3safe,A100,generator,0,CWE117,0,granite4.2:30b,3,granite4.2:30b,1,2026-10-18T07:11:45,2026-10-18T14:41:20,utc,26974.872451,0,
+generator__granite4.2_30b__r0__CWE284__CWE284_3safe,A100,generator,1,CWE284,0,granite4.2:30b,3,granite4.2:30b,1,2026-10-18T07:11:45,2026-10-18T18:18:27,utc,40001.643164,0,

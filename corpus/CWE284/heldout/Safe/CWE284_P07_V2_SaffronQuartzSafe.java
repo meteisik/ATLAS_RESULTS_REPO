@@ -1,0 +1,35 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class CWE284_P07_V2_SaffronQuartzSafe {
+
+    public void deleteSaffronQuartzAccount() throws SQLException {
+        String data;
+        data = null;
+        for (int j = 0; j < 1; j++) {
+            data = System.getenv("SAFFRON_QUARTZ_ACCOUNT_ID");
+        }
+        String requester = System.getProperty("user.name");
+        boolean authorized = (new CWE284_P07_V2_SaffronQuartzSafeChecker()).isAuthorized(data);
+        Connection saffronQuartzConnection = DriverManager.getConnection("jdbc:hsqldb:mem:saffronQuartz");
+        try {
+            PreparedStatement saffronQuartzDelete = saffronQuartzConnection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+            saffronQuartzDelete.setString(1, data);
+            if (authorized) {
+                saffronQuartzDelete.executeUpdate();
+            }
+        } finally {
+            saffronQuartzConnection.close();
+        }
+    }
+}
+
+class CWE284_P07_V2_SaffronQuartzSafeChecker {
+    public boolean isAuthorized(String accountId) {
+        String operator = System.getProperty("user.name");
+        boolean authorized = operator != null && operator.equals(accountId);
+        return authorized;
+    }
+}

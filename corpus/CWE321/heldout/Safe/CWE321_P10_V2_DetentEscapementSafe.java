@@ -1,0 +1,64 @@
+import java.lang.reflect.Constructor;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.crypto.spec.SecretKeySpec;
+
+public class CWE321_P10_V2_DetentEscapementSafe {
+
+    private interface DetentEscapementKeySource { String read(); }
+
+    private static final class DetentEscapementExternalSource implements DetentEscapementKeySource {
+        private final String first;
+        private final String second;
+        
+        DetentEscapementExternalSource(String firstExternal, String secondExternal) {
+            this.first = firstExternal;
+            this.second = secondExternal;
+            
+        }
+        public String read() {
+            return first.concat(second);
+        }
+    }
+
+    private byte[] encode(String material) { return material.getBytes(); }
+
+    private String route(String material) {
+        return new String(material.toCharArray());
+    }
+
+    private String dispatchRoute(String material) throws Exception {
+        Callable<String> callback =
+                new Callable<>() {
+            public String call() { return route(material); }
+        };
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        try {
+            return executor.submit(callback).get();
+        } finally {
+            executor.shutdownNow();
+        }
+    }
+
+    private SecretKeySpec consume(DetentEscapementExternalSource source) throws Exception {
+        Constructor<SecretKeySpec> constructor = SecretKeySpec.class.getConstructor(
+                byte[].class, String.class);
+        String sourceMaterial = source.read();
+        String material = dispatchRoute(sourceMaterial);
+        byte[] encodedMaterial = encode(material);
+        return constructor.newInstance(encodedMaterial, "AES");
+    }
+
+    public SecretKeySpec dispatchDetentEscapement(String firstExternal, String secondExternal) throws Exception {
+        // ATLAS V2: control-flow embedding only; V1 carrier/sink retained.
+        boolean atlasV2Pass = true;
+        while (atlasV2Pass) {
+            atlasV2Pass = false;
+            DetentEscapementExternalSource source = new DetentEscapementExternalSource(firstExternal, secondExternal);
+            return consume(source);
+        
+        }
+        throw new IllegalStateException("missing V2 pass");
+}
+}

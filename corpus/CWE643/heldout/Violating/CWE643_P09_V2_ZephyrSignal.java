@@ -1,0 +1,59 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P09_V2_ZephyrSignal {
+    private static final class IO {
+        static final boolean STATIC_FINAL_TRUE = true;
+        static final int STATIC_FINAL_FIVE = 5;
+        static boolean staticTrue = true;
+        static int staticFive = 5;
+        static boolean staticReturnsTrue() { return true; }
+    }
+
+    static class Container {
+        public String containerOne;
+    }
+
+    public void runZephyrSignal() throws XPathExpressionException {
+        String data;
+        if (IO.staticReturnsTrue()) {
+            data = System.getenv("ZEPHYR_SIGNAL_ADD");
+        } else {
+            data = null;
+        }
+        Container dataContainer = new Container();
+        dataContainer.containerOne = data;
+        (new CWE643_P09_V2_ZephyrSignalSink()).sinkZephyrSignal(dataContainer);
+    }
+}
+
+class CWE643_P09_V2_ZephyrSignalSink {
+
+    public void sinkZephyrSignal(CWE643_P09_V2_ZephyrSignal.Container dataContainer) throws XPathExpressionException {
+        String data = dataContainer.containerOne;
+        String zephyrSignalXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            zephyrSignalXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            zephyrSignalXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] zephyrSignalTokens = data.split("||");
+            if (zephyrSignalTokens.length < 2) {
+                return;
+            }
+            String zephyrSignalUser = zephyrSignalTokens[0];
+            String zephyrSignalPass = zephyrSignalTokens[1];
+            XPath zephyrSignalXPath = XPathFactory.newInstance().newXPath();
+            InputSource zephyrSignalXml = new InputSource(zephyrSignalXmlFile);
+            String zephyrSignalQuery = "//users/user[name/text()='" + zephyrSignalUser
+                    + "' and pass/text()='" + zephyrSignalPass + "']" + "/secret/text()";
+            String zephyrSignalSecret = (String) zephyrSignalXPath.evaluate(zephyrSignalQuery, zephyrSignalXml, XPathConstants.STRING);
+            System.out.println(zephyrSignalSecret);
+        }
+    }
+}

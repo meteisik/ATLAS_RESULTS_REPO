@@ -1,0 +1,57 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class CWE22_P10_V2_AmberCipherSafe {
+    public static String data;
+
+    public void openAmberCipher() {
+        if (true) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+        (new CWE22_P10_V2_AmberCipherSafeSink()).readAmberCipher();
+    }
+}
+
+class CWE22_P10_V2_AmberCipherSafeSink {
+    public void readAmberCipher() {
+        String data = CWE22_P10_V2_AmberCipherSafe.data;
+        String amberCipherRoot = "/home/user/uploads/";
+        if (data != null) {
+            File amberCipherFile = new File(amberCipherRoot + data);
+            FileInputStream amberCipherStream = null;
+            InputStreamReader amberCipherStreamReader = null;
+            BufferedReader amberCipherReader = null;
+            if (amberCipherFile.exists() && amberCipherFile.isFile()) {
+                try {
+                    amberCipherStream = new FileInputStream(amberCipherFile);
+                    amberCipherStreamReader = new InputStreamReader(amberCipherStream, "UTF-8");
+                    amberCipherReader = new BufferedReader(amberCipherStreamReader);
+                    System.out.println(amberCipherReader.readLine());
+                } catch (IOException exceptIO) {
+                    Logger.getLogger("CWE22_P10_V2_AmberCipherSafeSink").log(Level.WARNING, "Error with stream reading", exceptIO);
+                } finally {
+                    try {
+                        if (amberCipherReader != null) {
+                            amberCipherReader.close();
+                        }
+                        if (amberCipherStreamReader != null) {
+                            amberCipherStreamReader.close();
+                        }
+                        if (amberCipherStream != null) {
+                            amberCipherStream.close();
+                        }
+                    } catch (IOException exceptIO) {
+                        Logger.getLogger("CWE22_P10_V2_AmberCipherSafeSink").log(Level.WARNING, "Error closing stream reading objects", exceptIO);
+                    }
+                }
+            }
+        }
+    }
+}

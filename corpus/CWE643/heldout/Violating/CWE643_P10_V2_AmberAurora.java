@@ -1,0 +1,46 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P10_V2_AmberAurora {
+
+    public static String data;
+
+    public void runAmberAurora() throws XPathExpressionException {
+        while (true) {
+            data = System.getenv("AMBER_AURORA_ADD");
+            break;
+        }
+        (new CWE643_P10_V2_AmberAuroraSink()).sinkAmberAurora();
+    }
+}
+
+class CWE643_P10_V2_AmberAuroraSink {
+
+    public void sinkAmberAurora() throws XPathExpressionException {
+        String data = CWE643_P10_V2_AmberAurora.data;
+        String amberAuroraXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            amberAuroraXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            amberAuroraXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] amberAuroraTokens = data.split("||");
+            if (amberAuroraTokens.length < 2) {
+                return;
+            }
+            String amberAuroraUser = amberAuroraTokens[0];
+            String amberAuroraPass = amberAuroraTokens[1];
+            XPath amberAuroraXPath = XPathFactory.newInstance().newXPath();
+            InputSource amberAuroraXml = new InputSource(amberAuroraXmlFile);
+            String amberAuroraQuery = "//users/user[name/text()='" + amberAuroraUser
+                    + "' and pass/text()='" + amberAuroraPass + "']" + "/secret/text()";
+            String amberAuroraSecret = (String) amberAuroraXPath.evaluate(amberAuroraQuery, amberAuroraXml, XPathConstants.STRING);
+            System.out.println(amberAuroraSecret);
+        }
+    }
+}

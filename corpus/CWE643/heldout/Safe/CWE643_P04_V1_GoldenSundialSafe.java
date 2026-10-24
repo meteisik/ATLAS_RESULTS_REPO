@@ -1,0 +1,39 @@
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.xml.sax.InputSource;
+
+public class CWE643_P04_V1_GoldenSundialSafe {
+
+    private String sourceGoldenSundial() {
+        String data;
+        data = "foo";
+        return data;
+    }
+
+    public void runGoldenSundial() throws XPathExpressionException {
+        String data = sourceGoldenSundial();
+        String goldenSundialXmlFile = null;
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            goldenSundialXmlFile = "\\src\\testcases\\CWE643_Xpath Injection\\CWE643_Xpath_Injection__Helper.xml";
+        } else {
+            goldenSundialXmlFile = "./src/testcases/CWE643_Xpath Injection/CWE643_Xpath_Injection__Helper.xml";
+        }
+        if (data != null) {
+            String[] goldenSundialTokens = data.split("||");
+            if (goldenSundialTokens.length < 2) {
+                return;
+            }
+            String goldenSundialUser = goldenSundialTokens[0];
+            String goldenSundialPass = goldenSundialTokens[1];
+            XPath goldenSundialXPath = XPathFactory.newInstance().newXPath();
+            InputSource goldenSundialXml = new InputSource(goldenSundialXmlFile);
+            String goldenSundialQuery = "//users/user[name/text()='" + goldenSundialUser
+                    + "' and pass/text()='" + goldenSundialPass + "']" + "/secret/text()";
+            String goldenSundialSecret = (String) goldenSundialXPath.evaluate(goldenSundialQuery, goldenSundialXml, XPathConstants.STRING);
+            System.out.println(goldenSundialSecret);
+        }
+    }
+}
