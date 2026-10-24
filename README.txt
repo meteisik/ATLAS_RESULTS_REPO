@@ -19,9 +19,10 @@ Indexes
   campaign_inputs.csv:          Baseline/training files used by each campaign.
   rego_index.csv:               Pipeline-to-policy and driver mappings.
 
+Our repo includes a Windows sample runner that allows users to select from 791 archived analysis pipelines and analyze user-supplied Java files.
+
 To analyze a Java code sample, open the Windows sample runner,
 select a pipeline for the matching policy class, and upload the Java file.
 CWE321 baseline example: corpus/CWE321/baseline/MixedP1P2P3.java.
 
-The sample runner is only available for Windows systems.
-
+The sample runner is configured to run exclusively on Windows systems.
